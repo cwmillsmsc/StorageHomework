@@ -1,0 +1,58 @@
+<!-- Copyright (c) 2012 Mobile Developer Solutions -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <title>My Storage Homework</title>
+ 	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="index.css" /> 
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+    <script type="text/javascript">
+      $(body).ready(createDB());
+	function runSQL(){
+		db.executeSql('INSERT INTO DEMO(ID, data) VALUES( 1, $(#name).text)');
+	}
+    </script>
+  <body>
+	<div data-role="page" id="one" data-theme="b">
+	  <div data-role="header">
+		<h1>SQL Homework</h1>
+	  </div>
+	<div data-role="content">
+	  <div data-role="fieldcontain">
+        <label for="name">Text Input:</label>
+        <input type="text" name="name" id="name" value=""  />
+        <div data-role="button" id="submit" onclick="runSQL();">Submit</div>
+      </div>	
+	  <h2>SQL Storage</h2>
+	  <div data-role="controlgroup">
+		<!-- <div data-role="button" onclick="createDB();">Create DB</div> -->
+		<div data-role="button" onclick="getSqlResultSet();">SQL Result Set</div>
+		<div class="ui-grid-a">
+		  SQL Result: <br/><span id="sql-result"></span><b>
+		</div>	
+ 		<p><a href="#two" data-role="button">Local Storage</a></p>
+ 			
+	  </div>
+	</div>
+	<div data-role="page" id="two" data-theme="b">
+	  <div data-role="header">
+		<h1>Local Storage Homework</h1>
+	  </div>
+	<div data-role="content">	
+	
+	  <div data-role="controlgroup">
+	  <div data-role="button" onclick="writeLocalStorage();">Write LocalStorage</div>
+	  <div data-role="button" onclick="readLocalStorage();">Read LocalStorage</div>
+	  <div data-role="button" onclick="removeItemLocalStorage();">Remove Item</div>
+	  <div class="ui-grid-a">
+	    Local Storage: <span id="local-storage-result"></span><br/>
+	  </div>
+	  <p><a href="#one" data-role="button">SQL Storage</a></p>	
+	  
+	</div>
+  <script type="text/javascript" charset="utf-8" src="apis/storage.js"></script> 			
+  </body>
+</html>
